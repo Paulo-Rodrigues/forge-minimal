@@ -13,7 +13,7 @@ describe Forge::Lexer::Token do
           PLUS: '+',
           MINUS: '-',
           MULTIPLY: '*',
-          DIVIDE: '/',
+          DIVIDE: '/'
         }
       )
     end
@@ -42,7 +42,7 @@ describe Forge::Lexer::Token do
           SEMICOLUMN: ';',
           COMMA: ',',
           LPAREN: '(',
-          RPAREN: ')',
+          RPAREN: ')'
         }
       )
     end

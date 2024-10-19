@@ -3,7 +3,7 @@ require_relative '../../lib/ast/ast'
 
 RSpec.describe Forge::Parser::Parser do
   context 'when parsing assignments' do
-    let(:tokens_simple_assignment) { 
+    let(:tokens_simple_assignment) do
       [
         { type: :VAR, value: 'var' },
         { type: :IDENTIFIER, value: 'counter123' },
@@ -11,8 +11,8 @@ RSpec.describe Forge::Parser::Parser do
         { type: :INTEGER, value: '45' },
         { type: :SEMICOLUMN, value: ';' },
         { type: :EOF, value: '' }
-      ] 
-    }
+      ]
+    end
 
     it 'creates an AssignmentNode with an IdentifierNode and a NumberNode' do
       parser = described_class.new(tokens_simple_assignment)
@@ -29,7 +29,7 @@ RSpec.describe Forge::Parser::Parser do
       expect(assignment_node.value.value).to eq('45')
     end
 
-    let(:tokens_identifier_assignment) {
+    let(:tokens_identifier_assignment) do
       [
         { type: :VAR, value: 'var' },
         { type: :IDENTIFIER, value: 'x' },
@@ -38,7 +38,7 @@ RSpec.describe Forge::Parser::Parser do
         { type: :SEMICOLUMN, value: ';' },
         { type: :EOF, value: '' }
       ]
-    }
+    end
 
     it 'creates an AssignmentNode with an IdentifierNode and another IdentifierNode' do
       parser = described_class.new(tokens_identifier_assignment)
@@ -57,7 +57,7 @@ RSpec.describe Forge::Parser::Parser do
   end
 
   context 'when parsing complex expressions' do
-    let(:tokens_expression_assignment) {
+    let(:tokens_expression_assignment) do
       [
         { type: :VAR, value: 'var' },
         { type: :IDENTIFIER, value: 'result' },
@@ -68,7 +68,7 @@ RSpec.describe Forge::Parser::Parser do
         { type: :SEMICOLUMN, value: ';' },
         { type: :EOF, value: '' }
       ]
-    }
+    end
 
     it 'parses an assignment with a complex expression (10 + 5)' do
       parser = described_class.new(tokens_expression_assignment)
@@ -94,7 +94,7 @@ RSpec.describe Forge::Parser::Parser do
   end
 
   context 'when encountering invalid tokens' do
-    let(:tokens_invalid) {
+    let(:tokens_invalid) do
       [
         { type: :VAR, value: 'var' },
         { type: :IDENTIFIER, value: 'counter123' },
@@ -104,17 +104,19 @@ RSpec.describe Forge::Parser::Parser do
         { type: :SEMICOLUMN, value: ';' },
         { type: :EOF, value: '' }
       ]
-    }
+    end
 
     it 'raises an error when encountering an invalid token' do
       parser = described_class.new(tokens_invalid)
 
-      expect { parser.parse }.to raise_error(RuntimeError, "Unexpected token in expression: {:type=>:ILLEGAL, :value=>\"@\"}")
+      expect do
+        parser.parse
+      end.to raise_error(RuntimeError, 'Unexpected token in expression: {:type=>:ILLEGAL, :value=>"@"}')
     end
   end
 
   context 'when encountering unexpected token types' do
-    let(:tokens_unexpected_token) {
+    let(:tokens_unexpected_token) do
       [
         { type: :VAR, value: 'var' },
         { type: :INTEGER, value: '10' },
@@ -123,17 +125,17 @@ RSpec.describe Forge::Parser::Parser do
         { type: :SEMICOLUMN, value: ';' },
         { type: :EOF, value: '' }
       ]
-    }
+    end
 
     it 'raises an error when encountering an unexpected token type' do
       parser = described_class.new(tokens_unexpected_token)
 
-      expect { parser.parse }.to raise_error(RuntimeError, "Expected IDENTIFIER, but got: INTEGER")
+      expect { parser.parse }.to raise_error(RuntimeError, 'Expected IDENTIFIER, but got: INTEGER')
     end
   end
 
   context 'when parsing complex expressions' do
-    let(:tokens_expression_assignment) {
+    let(:tokens_expression_assignment) do
       [
         { type: :VAR, value: 'var' },
         { type: :IDENTIFIER, value: 'result' },
@@ -144,7 +146,7 @@ RSpec.describe Forge::Parser::Parser do
         { type: :SEMICOLUMN, value: ';' },
         { type: :EOF, value: '' }
       ]
-    }
+    end
 
     it 'parses an assignment with a complex expression (10 + 5)' do
       parser = described_class.new(tokens_expression_assignment)
@@ -170,7 +172,7 @@ RSpec.describe Forge::Parser::Parser do
   end
 
   context 'when parsing multiple assignments' do
-    let(:tokens_multiple_assignments) {
+    let(:tokens_multiple_assignments) do
       [
         { type: :VAR, value: 'var' },
         { type: :IDENTIFIER, value: 'x' },
@@ -184,7 +186,7 @@ RSpec.describe Forge::Parser::Parser do
         { type: :SEMICOLUMN, value: ';' },
         { type: :EOF, value: '' }
       ]
-    }
+    end
 
     it 'parses multiple assignment statements correctly' do
       parser = described_class.new(tokens_multiple_assignments)

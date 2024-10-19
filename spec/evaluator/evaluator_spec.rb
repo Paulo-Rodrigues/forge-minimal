@@ -59,7 +59,7 @@ describe Evaluator do
     it 'raises an error for unknown node types' do
       unknown_node = double('UnknownNode')
 
-      expect { evaluator.evaluate(unknown_node) }.to raise_error(RuntimeError, "Unknown node: RSpec::Mocks::Double")
+      expect { evaluator.evaluate(unknown_node) }.to raise_error(RuntimeError, 'Unknown node: RSpec::Mocks::Double')
     end
   end
 end

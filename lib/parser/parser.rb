@@ -13,6 +13,7 @@ module Forge
         statements = []
         until end_of_tokens?
           break if current_token[:type] == :EOF
+
           statements << parse_statement
         end
         statements
@@ -37,6 +38,7 @@ module Forge
 
       def peek_token
         return nil if @current_token_index + 1 >= tokens.length
+
         tokens[@current_token_index + 1]
       end
 

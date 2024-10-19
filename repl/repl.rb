@@ -4,12 +4,12 @@ require_relative '../lib/parser/parser'
 require_relative '../lib/environment/environment'
 require_relative '../lib/evaluator/evaluator'
 
-env = Environment.new
+Environment.new
 evaluator = Evaluator.new
 
 def repl(evaluator)
   loop do
-    print "> "
+    print '> '
     input = gets.chomp
 
     break if input == 'exit'
@@ -23,7 +23,7 @@ def repl(evaluator)
       result = evaluator.evaluate(ast.first) unless ast.empty?
 
       puts "=> #{result}"
-    rescue => e
+    rescue StandardError => e
       puts "Erro: #{e.message}"
     end
   end

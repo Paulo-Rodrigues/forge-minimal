@@ -2,7 +2,7 @@ module Forge
   module Lexer
     module Token
       KEYWORDS = {
-        VAR: 'var',
+        VAR: 'var'
       }.freeze
 
       OPERATORS = {
@@ -10,7 +10,7 @@ module Forge
         PLUS: '+',
         MINUS: '-',
         MULTIPLY: '*',
-        DIVIDE: '/',
+        DIVIDE: '/'
       }.freeze
 
       IDENTIFIERS = {
@@ -18,14 +18,14 @@ module Forge
       }.freeze
 
       LITERALS = {
-        INTEGER: 'INTEGER',
+        INTEGER: 'INTEGER'
       }.freeze
 
       DELIMETERS = {
         SEMICOLUMN: ';',
         COMMA: ',',
         LPAREN: '(',
-        RPAREN: ')',
+        RPAREN: ')'
       }.freeze
 
       COMMONS = {

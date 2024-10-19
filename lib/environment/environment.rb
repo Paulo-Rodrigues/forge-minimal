@@ -5,7 +5,7 @@ class Environment
 
   def initialize(parent_store = nil)
     @store = parent_store || {}
-  end 
+  end
 
   def set(name, value)
     store[name] = value

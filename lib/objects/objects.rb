@@ -14,6 +14,7 @@ class ForgeNumber < ForgeObject
   attr_reader :value
 
   def initialize(value)
+    super()
     @value = value.to_i
   end
 

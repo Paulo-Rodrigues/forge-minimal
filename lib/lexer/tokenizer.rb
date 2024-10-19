@@ -45,7 +45,6 @@ module Forge
             next
           end
 
-
           add_token(:ILLEGAL, current_char)
           advance
         end
@@ -92,21 +91,18 @@ module Forge
 
       def read_operator
         start_pos = position
-      
-        if !end_of_program?
-          if operator_start?(current_char) && operator_start?(peek_char)
-            advance
-            advance
-          else
-            advance
-          end
+
+        unless end_of_program?
+          advance if operator_start?(current_char) && operator_start?(peek_char)
+          advance
         end
-      
+
         program[start_pos...position]
       end
 
       def peek_char
         return nil if position + 1 >= program.length
+
         program[position + 1]
       end
 
