@@ -4,6 +4,10 @@ This is a simple demo for a presentation on Interpreters.
 
 Forge is a minimal interpreted dinamic language that supports only integers arithmetic operations for now.
 
+Our Mascot (Nosso Massacote) - It's a Linx
+![linx](https://github.com/user-attachments/assets/f5a92b3e-c607-45eb-a1a3-a715f40caeb6)
+
+
 If you want to try it, you can run on docker:
 
 ```bash
